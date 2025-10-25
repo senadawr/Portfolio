@@ -80,11 +80,11 @@
         .project-card {
             background: #000000;
             color: white;
-            padding: 2rem;
+            padding: 1rem;
             position: relative;
             transition: all 0.3s ease;
             cursor: pointer;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             text-decoration: none;
             display: block;
         }
@@ -100,9 +100,9 @@
         }
         .project-image {
             width: 100%;
-            height: 200px;
+            height: 140px;
             background: #333;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -111,9 +111,9 @@
         .tech-tag {
             background: #333;
             color: white;
-            padding: 0.25rem 0.5rem;
-            margin: 0.25rem;
-            font-size: 0.8rem;
+            padding: 0.2rem 0.4rem;
+            margin: 0.2rem;
+            font-size: 0.75rem;
             display: inline-block;
         }
         
@@ -122,6 +122,7 @@
         .expanded-content.show {
             display: block !important;
             animation: slideDown 0.4s ease-out;
+            overflow: hidden;
         }
         
         @keyframes slideDown {
@@ -139,32 +140,36 @@
         .expanded-showcase {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 0.5rem;
             align-items: start;
+            overflow: hidden;
         }
         
         .expanded-image {
             width: 100%;
-            aspect-ratio: 16/9;
+            aspect-ratio: 3/1;
             background: #333;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #666;
-            font-size: 1.2rem;
-            border: 3px solid #000000;
+            font-size: 0.5rem;
+            border: 1px solid #000000;
+            overflow: hidden;
         }
         
         .expanded-details {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 0.2rem;
+            overflow: hidden;
         }
         
         .expanded-description {
             font-family: 'Syne Mono', monospace;
-            line-height: 1.6;
-            font-size: 1.1rem;
+            padding: 0.2rem;
+            line-height: 1.3;
+            font-size: 0.9rem;
         }
         
         .expanded-tech {
@@ -175,22 +180,27 @@
         
         .expanded-links {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 0.3rem;
+            margin-top: 0.3rem;
+        }
+        
+        .expanded-links.discord-buttons {
+            gap: 0.8rem;
         }
         
         .expanded-link {
             position: relative;
             background: white;
             color: black;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1rem;
             text-decoration: none;
             font-family: 'Gotham', sans-serif;
             font-weight: bold;
             transition: all 0.3s ease;
-            border: 5px solid #000000;
+            border: 3px solid #000000;
             display: inline-block;
-            margin: 0.25rem;
+            margin: 0.1rem;
+            font-size: 0.8rem;
         }
         
         .expanded-link::before {
@@ -385,6 +395,92 @@
                 font-size: 2rem;
             }
         }
+        
+        /* Image Modal Styles */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .image-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: scaleIn 0.3s ease;
+        }
+        
+        .image-modal img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .image-modal-close {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .image-modal-close:hover {
+            background: #333;
+            transform: scale(1.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Blur background when modal is open */
+        body.modal-open {
+            overflow: hidden;
+        }
+        
+        body.modal-open .vanta-bg {
+            filter: blur(3px);
+        }
+        
+        body.modal-open main {
+            filter: blur(3px);
+        }
     </style>
 </head>
 <body class="text-black">
@@ -395,9 +491,9 @@
 
     <main class="relative">
         <!-- Projects Header -->
-        <section id="projects" class="min-h-screen py-20">
+        <section id="projects" class="min-h-screen py-6">
             <div class="container mx-auto px-4">
-                <h1 class="tyler-font text-5xl md:text-7xl mb-16 text-center font-black tracking-tighter">
+                <h1 class="tyler-font text-3xl md:text-5xl mb-16 text-center font-black tracking-tighter">
                     MY PROJECTS
                 </h1>
                 
@@ -409,13 +505,13 @@
                         <div class="project-image">
                             <i data-feather="message-circle" class="w-16 h-16"></i>
                         </div>
-                        <h3 class="tyler-font text-2xl mb-4">Personality Discord Bots</h3>
-                        <p class="body-font mb-4">
+                        <h3 class="tyler-font text-2xl mb-3">Personality Discord Bots</h3>
+                        <p class="body-font mb-3">
                             Personality Discord bots that copies a set personality that you can talk to. 
                             The bot maintains consistent character traits and responds with personality-driven 
                             interactions, creating an engaging conversational experience.
                         </p>
-                        <div class="mb-4">
+                        <div class="mb-2">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Discord.py</span>
                             <span class="tech-tag">AI/ML</span>
@@ -429,8 +525,9 @@
                         <div class="expanded-content" id="expanded-discord">
                             <div class="expanded-showcase">
                                 <div class="expanded-image">
-                                    <i data-feather="message-circle" class="w-24 h-24"></i>
-                                    <p>Project Image Coming Soon</p>
+                                    <div class="block w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('discordbots.png', 'Discord Bots Project')">
+                                        <img src="discordbots.png" alt="Discord Bots Project" class="w-full h-full object-cover">
+                                    </div>
                                 </div>
                                 <div class="expanded-details">
                                     <div class="expanded-description">
@@ -439,9 +536,9 @@
                                         interactions, creating an engaging conversational experience. These bots use advanced 
                                         AI to maintain character consistency across conversations.
                                     </div>
-                                    <div class="expanded-links">
-                                        <a href="https://github.com/senadawr/JacobGPT" target="_blank" class="expanded-link">JacobGPT</a>
-                                        <a href="https://github.com/senadawr/AizenGPT" target="_blank" class="expanded-link">AizenGPT</a>
+                                    <div class="expanded-links discord-buttons">
+                                        <a href="https://github.com/senadawr/JacobGPT" target="_blank" class="expanded-link" onclick="event.stopPropagation()">JacobGPT</a>
+                                        <a href="https://github.com/senadawr/AizenGPT" target="_blank" class="expanded-link" onclick="event.stopPropagation()">AizenGPT</a>
                                     </div>
                                 </div>
                             </div>
@@ -453,8 +550,8 @@
                         <div class="project-image">
                             <i data-feather="book-open" class="w-16 h-16"></i>
                         </div>
-                        <h3 class="tyler-font text-2xl mb-4">Student Grading System</h3>
-                        <p class="body-font mb-4">
+                        <h3 class="tyler-font text-2xl mb-3">Student Grading System</h3>
+                        <p class="body-font mb-3">
                             An automated student grading system that calculates and sorts student grades. 
                             The system computes both raw GWA (Grade Weighted Average) and converted GWA, 
                             providing comprehensive grade analysis and management.
@@ -472,8 +569,9 @@
                         <div class="expanded-content" id="expanded-grading">
                             <div class="expanded-showcase">
                                 <div class="expanded-image">
-                                    <i data-feather="book-open" class="w-24 h-24"></i>
-                                    <p>Project Image Coming Soon</p>
+                                    <div class="block w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('studentgrading.png', 'Student Grading System Project')">
+                                        <img src="studentgrading.png" alt="Student Grading System Project" class="w-full h-full object-cover">
+                                    </div>
                                 </div>
                                 <div class="expanded-details">
                                     <div class="expanded-description">
@@ -483,7 +581,7 @@
                                         sorting, statistical analysis, and export functionality.
                                     </div>
                                     <div class="expanded-links">
-                                        <a href="https://github.com/senadawr/Student-Grading-System-Java" target="_blank" class="expanded-link">View on GitHub</a>
+                                        <a href="https://github.com/senadawr/Student-Grading-System-Java" target="_blank" class="expanded-link" onclick="event.stopPropagation()">View on GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -495,12 +593,12 @@
                         <div class="project-image">
                             <i data-feather="globe" class="w-16 h-16"></i>
                         </div>
-                        <h3 class="tyler-font text-2xl mb-4">Language Detector</h3>
-                        <p class="body-font mb-4">
+                        <h3 class="tyler-font text-2xl mb-3">Language Detector</h3>
+                        <p class="body-font mb-3">
                             A language detection tool using Naive Bayes classifiers trained on character n-grams. 
                             Supports dozens of languages using the Tatoeba Project dataset for training and testing.
                         </p>
-                        <div class="mb-4">
+                        <div class="mb-2">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Machine Learning</span>
                             <span class="tech-tag">Naive Bayes</span>
@@ -513,8 +611,9 @@
                         <div class="expanded-content" id="expanded-language">
                             <div class="expanded-showcase">
                                 <div class="expanded-image">
-                                    <i data-feather="globe" class="w-24 h-24"></i>
-                                    <p>Project Image Coming Soon</p>
+                                    <div class="block w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('languagedetector.png', 'Language Detector Project')">
+                                        <img src="languagedetector.png" alt="Language Detector Project" class="w-full h-full object-cover">
+                                    </div>
                                 </div>
                                 <div class="expanded-details">
                                     <div class="expanded-description">
@@ -523,7 +622,7 @@
                                         Features high accuracy detection and support for multiple language families.
                                     </div>
                                     <div class="expanded-links">
-                                        <a href="https://github.com/senadawr/Language-Detector" target="_blank" class="expanded-link">View on GitHub</a>
+                                        <a href="https://github.com/senadawr/Language-Detector" target="_blank" class="expanded-link" onclick="event.stopPropagation()">View on GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -535,12 +634,12 @@
                         <div class="project-image">
                             <i data-feather="archive" class="w-16 h-16"></i>
                         </div>
-                        <h3 class="tyler-font text-2xl mb-4">Text File Compressor</h3>
-                        <p class="body-font mb-4">
+                        <h3 class="tyler-font text-2xl mb-3">Text File Compressor</h3>
+                        <p class="body-font mb-3">
                             A file compression and decompression tool using Huffman coding algorithm. 
                             Includes benchmarking tools to measure compression efficiency and performance analysis.
                         </p>
-                        <div class="mb-4">
+                        <div class="mb-2">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Huffman Coding</span>
                             <span class="tech-tag">Algorithm Analysis</span>
@@ -553,8 +652,9 @@
                         <div class="expanded-content" id="expanded-compressor">
                             <div class="expanded-showcase">
                                 <div class="expanded-image">
-                                    <i data-feather="archive" class="w-24 h-24"></i>
-                                    <p>Project Image Coming Soon</p>
+                                    <div class="block w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('textfilecompressor.png', 'Text File Compressor Project')">
+                                        <img src="textfilecompressor.png" alt="Text File Compressor Project" class="w-full h-full object-cover">
+                                    </div>
                                 </div>
                                 <div class="expanded-details">
                                     <div class="expanded-description">
@@ -563,7 +663,7 @@
                                         Features both compression and decompression with detailed performance metrics.
                                     </div>
                                     <div class="expanded-links">
-                                        <a href="https://github.com/senadawr/Text-File-Compressor" target="_blank" class="expanded-link">View on GitHub</a>
+                                        <a href="https://github.com/senadawr/Text-File-Compressor" target="_blank" class="expanded-link" onclick="event.stopPropagation()">View on GitHub</a>
                                     </div>
                                 </div>
                             </div>
@@ -577,6 +677,14 @@
     </main>
 
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
     <script src="components/navbar.js"></script>
     <script src="components/dot-pattern.js"></script>
     <script src="script.js"></script>
@@ -584,6 +692,37 @@
 
         // Initialize feather icons
         feather.replace();
+        
+        // Image modal functionality
+        function openImageModal(imageSrc, imageAlt) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalImage.src = imageSrc;
+            modalImage.alt = imageAlt;
+            modal.classList.add('show');
+            document.body.classList.add('modal-open');
+        }
+        
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            document.body.classList.remove('modal-open');
+        }
+        
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
         
     </script>
 </body>

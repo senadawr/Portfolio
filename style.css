@@ -491,7 +491,7 @@ section {
 /* Expanded showcase layout */
 .expanded-showcase {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.7fr 0.7fr;
     gap: 2rem;
     align-items: start;
 }
