@@ -45,13 +45,6 @@ body {
     opacity: 0.5;
 }
 
-/* Animation utility classes */
-.animate-fade-in {
-    animation: fade-in 1s ease-out forwards; /* Apply fade-in animation */
-}
-.animate-bounce {
-    animation: bounce 2s infinite; /* Apply continuous bounce animation */
-}
 
 /* ========================================== */
 /* SCROLL ANIMATIONS */
@@ -76,29 +69,6 @@ body {
     transform: translateY(0) scale(1); /* Normal position and scale */
 }
 
-/* ========================================== */
-/* CUSTOM CURSOR EFFECTS */
-/* ========================================== */
-
-/* Custom cursor styling (if implemented) */
-.custom-cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    pointer-events: none; /* Don't interfere with mouse events */
-    mix-blend-mode: difference; /* Blend with background */
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease-out;
-    z-index: 9999; /* Always on top */
-}
-
-/* Custom cursor hover state */
-.custom-cursor-hover {
-    transform: translate(-50%, -50%) scale(1.5); /* Scale up on hover */
-    background-color: rgba(255, 255, 255, 0.8);
-}
 /* ========================================== */
 /* BUTTON STYLES */
 /* ========================================== */
@@ -488,11 +458,32 @@ section {
     transform: scale(1.05);
 }
 
+/* Project icon at top of panel - hidden by default */
+.project-icon-top {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+/* Show feather icon only when panel is expanded */
+.project-card.expanded .project-icon-top {
+    display: flex;
+}
+
+/* Hide small panel image when expanded */
+.project-card.expanded .project-image {
+    display: none;
+}
+
+
 /* Expanded showcase layout */
 .expanded-showcase {
     display: grid;
-    grid-template-columns: 0.7fr 0.7fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
     align-items: start;
 }
 
@@ -506,18 +497,21 @@ section {
     color: #666;
     font-size: 1.2rem;
     border: 3px solid #000000;
+    margin-top: 0;
 }
 
 .expanded-details {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    margin-top: 0;
 }
 
 .expanded-description {
     font-family: 'Syne Mono', monospace;
     line-height: 1.6;
     font-size: 1.1rem;
+    margin-top: 0;
 }
 
 .expanded-tech {
