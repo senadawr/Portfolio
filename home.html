@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mico Roaquin | Portfolio</title>
+    <link rel="icon" type="image/png" href="sprite.png" />
+
+    <!-- local libraries (libs folder) -->
+    <script src="libs/tailwindcss.js"></script> //utility classes
+    <script src="libs/feather-icons.js"></script> //feather icons
+    <script src="libs/vanta-dots.js"></script> //animated background
+    <link rel="stylesheet" href="libs/google-fonts.css"> //google fonts
+    <link rel="stylesheet" href="style.css"> //custom css
+<style>
+        /* button styling */
+        .tyler-font { font-family: 'Gotham', sans-serif; } /*title font*/
+        .body-font { font-family: 'Syne Mono', monospace; } /*body font*/
+        .outline-btn {
+            position: relative;
+            border: 5px solid #000000;
+            padding: 1.5rem 2rem;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            z-index: 1;
+        }
+        .outline-btn:hover {
+            background-color: white;
+            color: black;
+            transform: scale(1.05);
+        }
+        /* Creates the disconnected border effect */
+        .outline-btn::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            border: 5px solid #000000;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        section {
+            min-height: 100vh;
+            padding: 4rem 0;
+            display: flex;
+            align-items: center;
+        }
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after { width: 100%; }
+    </style>
+</head>
+<body class="text-black">
+    <div id="vanta-bg" class="vanta-bg"></div>
+    <dot-pattern></dot-pattern>
+    <custom-navbar></custom-navbar>
+
+    <main class="relative">
+        /* HERO SECTION */
+        <section id="home" class="scroll-section h-screen flex flex-col items-center justify-center text-center px-4">
+            <h1 class="tyler-font text-6xl md:text-8xl mb-6 font-black tracking-tighter animate-fade-in">
+                HELLO, I'M MICO
+            </h1>
+            <p class="body-font text-xl md:text-2xl mb-12 max-w-xl animate-fade-in">
+                Computer Science student & Graphic Designer
+            </p>
+            <a href="#about" class="scroll-down-btn animate-bounce">
+                <span class="tyler-font">VIEW MY WORK</span>
+                <i data-feather="arrow-down" class="ml-2"></i>
+            </a>
+        </section>
+
+        <section id="about" class="scroll-section min-h-screen py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="tyler-font text-5xl md:text-7xl mb-16 text-center font-black tracking-tighter">
+                    ABOUT ME
+                </h2>
+                <div class="max-w-3xl mx-auto">
+                    <img src="aboutme.png" alt="Mico's Portrait" class="w-64 h-64 rounded-full mx-auto mb-8 object-cover profile-image">
+                </div>
+                
+                <!-- Desktop: Side by side layout, Mobile: Stacked -->
+                <div class="flex flex-col lg:flex-row lg:items-start lg:gap-12 max-w-6xl mx-auto">
+                    <div class="flex-1 body-font text-lg md:text-xl about-text" style="margin-left: 2rem;">
+                        <p>
+                            I'm a Computer Science student and a graphic designer who enjoys finding the balance between logic and creativity. I like building things that work well and look good — whether that's a program, a layout, or a small personal project.
+                            <br><br>
+                        </p>
+                        <p>
+                            Based in Los Baños, Laguna, I've worked on coding projects like Discord bots and algorithm visualizations, and I also spend time designing visuals that tell a story or make ideas easier to understand. I care a lot about clean design, thoughtful details, and solving problems in a way that feels simple and natural.
+                        </p>
+                    </div>
+                    
+                    <div class="flex-1 mt-12 lg:mt-0">
+                        <div class="skills-circle">
+                        <div class="skill-item">
+                            <div class="icon-wrapper">
+                                <img src="HTML.png" alt="HTML" class="w-12 h-12">
+                            </div>
+                            <span class="skill-label">HTML</span>
+                        </div>
+                        <!-- Python -->
+                        <div class="skill-item">
+                            <div class="icon-wrapper">
+                                <img src="python.png" alt="Python" class="w-12 h-12">
+                            </div>
+                            <span class="skill-label">PYTHON</span>
+                        </div>
+                        <!-- Java -->
+                        <div class="skill-item">
+                            <div class="icon-wrapper">
+                                <img src="java.png" alt="Java" class="w-12 h-12">
+                            </div>
+                            <span class="skill-label">JAVA</span>
+                        </div>
+                        <!-- Blender 3D -->
+                        <div class="skill-item">
+                            <div class="icon-wrapper">
+                                <img src="blender.png" alt="Blender" class="w-12 h-12">
+                            </div>
+                            <span class="skill-label">BLENDER</span>
+                        </div>
+                        <!-- Adobe Photoshop -->
+                        <div class="skill-item">
+                            <div class="icon-wrapper">
+                                <img src="PS.png" alt="Photoshop" class="w-12 h-12">
+                            </div>
+                            <span class="skill-label">PHOTOSHOP</span>
+                        </div>
+                        <!-- Adobe Premiere Pro -->
+                        <div class="skill-item">
+                            <div class="icon-wrapper">
+                                <img src="PP.png" alt="Premiere Pro" class="w-12 h-12">
+                            </div>
+                            <span class="skill-label">PREMIERE</span>
+                        </div>
+                        <!-- Adobe After Effects -->
+                        <div class="skill-item">
+                            <div class="icon-wrapper">
+                                <img src="AE.png" alt="After Effects" class="w-12 h-12">
+                            </div>
+                            <span class="skill-label">AFTER EFFECTS</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="work" class="scroll-section min-h-screen py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="tyler-font text-5xl md:text-7xl mb-16 text-center font-black tracking-tighter">
+                    MY WORK
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <a href="projects.html" class="work-card">
+                        <div class="work-card-img">
+                            <img src="http://static.photos/technology/640x360/1" alt="Projects">
+                        </div>
+                        <h3 class="tyler-font text-2xl mt-4">Projects</h3>
+                        <p class="body-font mt-2">Coding and development work</p>
+                    </a>
+                    <div class="work-card">
+                        <div class="work-card-img">
+                            <img src="http://static.photos/technology/640x360/1" alt="Creative Design">
+                        </div>
+                        <h3 class="tyler-font text-2xl mt-4">Creative Design</h3>
+                        <p class="body-font mt-2">Visual and graphic design work</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="scroll-section min-h-screen py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="tyler-font text-5xl md:text-7xl mb-16 font-black tracking-tighter">
+                    GET IN TOUCH
+                </h2>
+                <div class="max-w-md mx-auto">
+                    <form class="space-y-4 text-left body-font">
+                        <input type="text" placeholder="Your Name" class="w-full p-3 bg-black bg-opacity-50 border border-white">
+                        <input type="email" placeholder="Your Email" class="w-full p-3 bg-black bg-opacity-50 border border-white">
+                        <textarea placeholder="Your Message" rows="5" class="w-full p-3 bg-black bg-opacity-50 border border-white"></textarea>
+                        <button type="submit" class="tyler-font px-6 py-3 bg-white text-black hover:bg-opacity-90 transition">
+                            SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+                <div class="flex justify-center space-x-6 mt-12">
+                    <a href="https://www.instagram.com/senadawr_mico/" target="_blank" class="p-3 rounded-full hover:text-green-500 transition">
+                        <i data-feather="instagram" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://www.facebook.com/senadawr.mico" target="_blank" class="p-3 rounded-full hover:text-blue-400 transition">
+                        <i data-feather="facebook" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@senadawr2099" target="_blank" class="p-3 rounded-full hover:text-red-500 transition">
+                        <i data-feather="youtube" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/dot-pattern.js"></script>
+    <script src="script.js"></script>
+    <script>feather.replace();</script>
+</body>
+</html>
