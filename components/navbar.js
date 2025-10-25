@@ -21,28 +21,62 @@ class CustomNavbar extends HTMLElement {
           }
           .nav-links {
             display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: #01823E;
+            flex-direction: column;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          }
+          .nav-links.active {
+            display: flex;
           }
           .nav-links a {
-            font-family: 'Gotham', sans-serif;
+            font-family: 'Syne Mono', monospace;
             color: black;
             text-decoration: none;
-            margin-left: 2rem;
+            padding: 0.75rem 1rem;
             transition: color 0.3s ease;
             cursor: pointer;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+          }
+          .nav-links a:last-child {
+            border-bottom: none;
           }
           .nav-links a:hover {
-            color: #01823E;
+            color: white;
+            background: rgba(0, 0, 0, 0.1);
           }
           .mobile-menu-btn {
             display: block;
             background: none;
             border: none;
             color: black;
-  font-size: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
           }
           @media (min-width: 768px) {
             .nav-links {
               display: flex;
+              position: static;
+              flex-direction: row;
+              padding: 0;
+              box-shadow: none;
+              background: transparent;
+            }
+            .nav-links a {
+              margin-left: 2rem;
+              padding: 0.5rem 0;
+              border-bottom: none;
+              text-align: left;
+            }
+            .nav-links a:hover {
+              background: transparent;
+              color: #01823E;
             }
             .mobile-menu-btn {
               display: none;
@@ -52,10 +86,10 @@ class CustomNavbar extends HTMLElement {
         <nav>
           <div class="nav-container">
             <div class="nav-links">
-              <a href="#home">HOME</a>
-              <a href="#about">ABOUT</a>
-              <a href="#work">MY WORK</a>
-              <a href="#contact">CONTACT</a>
+              <a href="index.html#home">HOME</a>
+              <a href="index.html#about">ABOUT</a>
+              <a href="index.html#work">MY WORK</a>
+              <a href="index.html#contact">CONTACT</a>
             </div>
   <button class="mobile-menu-btn">
               <i data-feather="menu"></i>
@@ -66,6 +100,9 @@ class CustomNavbar extends HTMLElement {
       
       // Add smooth scrolling functionality
       this.addSmoothScrolling();
+      
+      // Add mobile menu functionality
+      this.addMobileMenu();
     }
     
     addSmoothScrolling() {
@@ -89,6 +126,32 @@ class CustomNavbar extends HTMLElement {
           }
         });
       });
+    }
+    
+    addMobileMenu() {
+      const mobileMenuBtn = this.shadowRoot.querySelector('.mobile-menu-btn');
+      const navLinks = this.shadowRoot.querySelector('.nav-links');
+      
+      if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const links = this.shadowRoot.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+          });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!this.contains(e.target)) {
+            navLinks.classList.remove('active');
+          }
+        });
+      }
     }
   }
   customElements.define('custom-navbar', CustomNavbar);

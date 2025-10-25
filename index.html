@@ -65,6 +65,21 @@
             transition: width 0.3s ease;
         }
         .nav-link:hover:after { width: 100%; }
+        
+        /* Mobile-specific improvements */
+        @media (max-width: 768px) {
+            .about-text {
+                margin-left: 0 !important;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="text-black">
@@ -73,7 +88,7 @@
     <custom-navbar></custom-navbar>
 
     <main class="relative">
-        /* HERO SECTION */
+        <!-- HERO SECTION -->
         <section id="home" class="scroll-section h-screen flex flex-col items-center justify-center text-center px-4">
             <h1 class="tyler-font text-6xl md:text-8xl mb-6 font-black tracking-tighter animate-fade-in">
                 HELLO, I'M MICO
@@ -98,7 +113,7 @@
                 
                 <!-- Desktop: Side by side layout, Mobile: Stacked -->
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-12 max-w-6xl mx-auto">
-                    <div class="flex-1 body-font text-lg md:text-xl about-text" style="margin-left: 2rem;">
+                    <div class="flex-1 body-font text-lg md:text-xl about-text">
                         <p>
                             I'm a Computer Science student and a graphic designer who enjoys finding the balance between logic and creativity. I like building things that work well and look good — whether that's a program, a layout, or a small personal project.
                             <br><br>
@@ -191,25 +206,15 @@
                 <h2 class="tyler-font text-5xl md:text-7xl mb-16 font-black tracking-tighter">
                     GET IN TOUCH
                 </h2>
-                <div class="max-w-md mx-auto">
-                    <form class="space-y-4 text-left body-font">
-                        <input type="text" placeholder="Your Name" class="w-full p-3 bg-black bg-opacity-50 border border-white">
-                        <input type="email" placeholder="Your Email" class="w-full p-3 bg-black bg-opacity-50 border border-white">
-                        <textarea placeholder="Your Message" rows="5" class="w-full p-3 bg-black bg-opacity-50 border border-white"></textarea>
-                        <button type="submit" class="tyler-font px-6 py-3 bg-white text-black hover:bg-opacity-90 transition">
-                            SEND MESSAGE
-                        </button>
-                    </form>
-                </div>
                 <div class="flex justify-center space-x-6 mt-12">
                     <a href="https://www.instagram.com/senadawr_mico/" target="_blank" class="p-3 rounded-full hover:text-green-500 transition">
-                        <i data-feather="instagram" class="w-6 h-6"></i>
+                        <i data-feather="instagram" class="w-8 h-8"></i>
                     </a>
                     <a href="https://www.facebook.com/senadawr.mico" target="_blank" class="p-3 rounded-full hover:text-blue-400 transition">
-                        <i data-feather="facebook" class="w-6 h-6"></i>
+                        <i data-feather="facebook" class="w-8 h-8"></i>
                     </a>
                     <a href="https://www.youtube.com/@senadawr2099" target="_blank" class="p-3 rounded-full hover:text-red-500 transition">
-                        <i data-feather="youtube" class="w-6 h-6"></i>
+                        <i data-feather="youtube" class="w-8 h-8"></i>
                     </a>
                 </div>
             </div>

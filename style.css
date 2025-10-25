@@ -564,14 +564,64 @@ section {
     transform: scale(1.05);
 }
 
-/* Responsive design for project grid */
+/* ========================================== */
+/* MOBILE RESPONSIVE DESIGN */
+/* ========================================== */
+
+/* Large tablets and small desktops */
 @media (max-width: 1024px) {
     .project-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    
+    .skills-circle {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .skills-circle .skill-item {
+        width: 120px;
+        height: 120px;
+    }
 }
 
+/* Tablets */
 @media (max-width: 768px) {
+    
+    /* Typography adjustments */
+    .tyler-font {
+        font-size: clamp(2rem, 8vw, 4rem);
+    }
+    
+    /* Section padding */
+    section {
+        padding: 4rem 0;
+    }
+    
+    /* Skills circle - convert to grid layout */
+    .skills-circle {
+        position: static;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+    
+    .skills-circle .skill-item {
+        position: static;
+        transform: none !important;
+        width: auto;
+        height: auto;
+        margin: 0;
+    }
+    
+    .skills-circle .skill-item:hover {
+        transform: scale(1.05) !important;
+    }
+    
+    /* Project grid */
     .expanded-showcase {
         grid-template-columns: 1fr;
     }
@@ -582,5 +632,119 @@ section {
     
     .project-grid.pinned {
         grid-template-columns: 1fr;
+    }
+    
+    .other-panels-container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Button improvements for touch */
+    .outline-btn, .scroll-down-btn {
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+        min-height: 48px; /* Minimum touch target size */
+    }
+    
+    .expanded-link {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        min-height: 48px;
+    }
+    
+    /* Work cards */
+    .work-card {
+        padding: 1.5rem;
+    }
+    
+    /* Profile image */
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    
+    /* Typography */
+    .tyler-font {
+        font-size: clamp(1.5rem, 6vw, 3rem);
+    }
+    
+    .body-font {
+        font-size: 0.9rem;
+    }
+    
+    /* Section padding */
+    section {
+        padding: 3rem 0;
+    }
+    
+    /* Container padding */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Skills circle - 2 columns on very small screens */
+    .skills-circle {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Project cards */
+    .project-card {
+        padding: 1.5rem;
+    }
+    
+    .expanded-content {
+        padding: 1rem;
+        max-height: 60vh;
+    }
+    
+    /* Buttons */
+    .outline-btn, .scroll-down-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        margin: 0.25rem;
+    }
+    
+    .expanded-link {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+        display: block;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+    
+    .expanded-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    /* Work cards */
+    .work-card {
+        padding: 1rem;
+    }
+    
+    /* Profile image */
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* About text */
+    .about-text {
+        margin-left: 0 !important;
+        text-align: center;
+    }
+    
+    /* Social links */
+    .flex.justify-center.space-x-6 {
+        gap: 1rem;
+    }
+    
+    .flex.justify-center.space-x-6 a {
+        padding: 0.75rem;
     }
 }
