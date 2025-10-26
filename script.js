@@ -65,9 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make functions globally available
     window.pinPanel = function(panel, panelId) {
         if (isPinned) {
-            if (pinnedPanel === panel) {
-                unpinPanel({ stopPropagation: () => {} });
-            }
             return;
         }
         
@@ -99,6 +96,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (expandedContent) {
                 expandedContent.classList.add('show');
             }
+            // Show the close button for this panel
+            const closeButton = panel.querySelector('.expanded-close-btn');
+            if (closeButton) {
+                closeButton.style.display = 'flex';
+            }
+            // Reinitialize feather icons for the close button
             if (typeof feather !== 'undefined') {
                 feather.replace();
             }
@@ -117,6 +120,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (expandedContent) {
             expandedContent.classList.remove('show');
         }
+        
+        // Hide all close buttons
+        allPanels.forEach(p => {
+            const closeButton = p.querySelector('.expanded-close-btn');
+            if (closeButton) {
+                closeButton.style.display = 'none';
+            }
+        });
         
         setTimeout(() => {
             grid.classList.remove('pinned');
