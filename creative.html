@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mico Roaquin | Creative Designs</title>
+    <link rel="icon" type="image/png" href="images/sprites/sprite.png" />
+    <script src="libs/tailwindcss.js"></script> <!-- Tailwind CSS for utility classes -->
+    <script src="libs/feather-icons.js"></script> <!-- Feather icons for social media/icons -->
+    <script src="libs/vanta-dots.js"></script> <!-- Vanta.js for animated background -->
+    <link rel="stylesheet" href="libs/google-fonts.css"> <!-- Google Fonts CSS -->
+    <link rel="stylesheet" href="style.css"> <!-- Custom CSS styles -->
+    <meta name="description" content="Portfolio of creative designs: posters, motion graphics, and 3D renders." />
+</head>
+<body class="text-black">
+    <div id="vanta-bg" class="vanta-bg"></div>
+    <dot-pattern></dot-pattern>
+    <custom-navbar></custom-navbar>
+
+    <main class="relative">
+        <!-- Creative Designs Header -->
+        <section id="creative" class="min-h-screen py-6">
+            <div class="container mx-auto px-4">
+                <h1 class="tyler-font text-3xl md:text-5xl mb-16 text-center font-black tracking-tighter">
+                    MY CREATIVE DESIGNS
+                </h1>
+
+                <!-- Creative Grid -->
+                <div class="project-grid centered-grid max-w-7xl mx-auto" id="projectGrid">
+                    
+                    <!-- Design 1: Poster Designs -->
+                    <div class="project-card poster-card" onclick="pinPanel(this, 'posters')">
+                        <div class="project-icon-top">
+                            <i data-feather="image" class="w-16 h-16"></i>
+                        </div>
+                        <div class="project-image">
+                            <img src="images/sprites/PS.png" alt="Poster Designs" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="tyler-font text-2xl mb-3">Poster Designs</h3>
+                        <p class="body-font mb-3">
+                            A collection of my poster layouts since 2021.
+                        </p>
+
+                        <!-- Close Button for Posters -->
+                        <button class="expanded-close-btn" onclick="event.stopPropagation(); unpinPanel(event);" style="display: none;">
+                            <i data-feather="arrow-left" class="w-4 h-4"></i>
+                            <span>Back</span>
+                        </button>
+
+                        <!-- Expanded Content -->
+                        <div class="expanded-content" id="expanded-posters">
+                            <div class="expanded-showcase">
+                                <div class="expanded-image">
+                                    <div class="block w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/sprites/PS.png', 'Poster Designs')">
+                                        <img src="images/sprites/PS.png" alt="Poster Designs" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="expanded-details">
+                                    <div class="expanded-description">
+                                        Posters are either made for a comission or for personal use.
+                                    </div>
+                                    <div class="expanded-links">
+                                        <a href="https://www.instagram.com/senadawr_mico/" target="_blank" class="expanded-link" onclick="event.stopPropagation()">View more on Instagram</a>
+                                    </div>
+                                    <div class="posters-grid grid grid-cols-3 gap-6 mt-4">
+                                        <div class="relative w-full poster-embed" style="padding-top: 141.4%;">
+                                            <div class="absolute top-0 left-0 w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/projects/poster1.png', 'Poster 1')">
+                                                <img src="images/projects/poster1.png" alt="Poster 1" class="w-full h-full object-cover">
+                                            </div>
+                                        </div>
+                                        <div class="relative w-full poster-embed" style="padding-top: 141.4%;">
+                                            <div class="absolute top-0 left-0 w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/projects/poster2.png', 'Poster 2')">
+                                                <img src="images/projects/poster2.png" alt="Poster 2" class="w-full h-full object-cover">
+                                            </div>
+                                        </div>
+                                        <div class="relative w-full poster-embed" style="padding-top: 141.4%;">
+                                            <div class="absolute top-0 left-0 w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/projects/poster3.png', 'Poster 3')">
+                                                <img src="images/projects/poster3.png" alt="Poster 3" class="w-full h-full object-cover">
+                                            </div>
+                                        </div>
+                                        <div class="relative w-full poster-embed" style="padding-top: 141.4%;">
+                                            <div class="absolute top-0 left-0 w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/projects/poster4.png', 'Poster 4')">
+                                                <img src="images/projects/poster4.png" alt="Poster 4" class="w-full h-full object-cover">
+                                            </div>
+                                        </div>
+                                        <div class="relative w-full poster-embed" style="padding-top: 141.4%;">
+                                            <div class="absolute top-0 left-0 w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/projects/poster5.png', 'Poster 5')">
+                                                <img src="images/projects/poster5.png" alt="Poster 5" class="w-full h-full object-cover">
+                                            </div>
+                                        </div>
+                                        <div class="relative w-full poster-embed" style="padding-top: 141.4%;">
+                                            <div class="absolute top-0 left-0 w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/projects/poster6.png', 'Poster 6')">
+                                                <img src="images/projects/poster6.png" alt="Poster 6" class="w-full h-full object-cover">
+                                            </div>
+                                        </div>
+                                        <div class="relative w-full poster-embed" style="padding-top: 141.4%;">
+                                            <div class="absolute top-0 left-0 w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/projects/poster7.png', 'Poster 7')">
+                                                <img src="images/projects/poster7.png" alt="Poster 7" class="w-full h-full object-cover">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design 2: Motion Graphics -->
+                    <div class="project-card motion-card" onclick="pinPanel(this, 'motion')">
+                        <div class="project-icon-top">
+                            <i data-feather="film" class="w-16 h-16"></i>
+                        </div>
+                        <div class="project-image">
+                            <img src="images/sprites/AE.png" alt="Motion Graphics" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="tyler-font text-2xl mb-3">Motion Graphics</h3>
+                        <p class="body-font mb-3">
+                            Short motion graphics and animated videos which are crafted using keyframes and great visual timing.
+                        </p>
+
+                        <!-- Close Button for Motion -->
+                        <button class="expanded-close-btn" onclick="event.stopPropagation(); unpinPanel(event);" style="display: none;">
+                            <i data-feather="arrow-left" class="w-4 h-4"></i>
+                            <span>Back</span>
+                        </button>
+
+                        <!-- Expanded Content -->
+                        <div class="expanded-content" id="expanded-motion">
+                            <div class="expanded-showcase motion-expanded">
+                                <div class="expanded-image">
+                                    <div class="block w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/sprites/AE.png', 'Motion Graphics')">
+                                        <img src="images/sprites/AE.png" alt="Motion Graphics" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="expanded-details">
+                                    <div class="expanded-description">
+                                        Note: youtube embedding sometimes does not work. In the mean time, feel free to view my work in Youtube.com 
+                                    </div>
+                                    <div class="expanded-links">
+                                        <a href="https://www.youtube.com/@senadawr2099" target="_blank" class="expanded-link" onclick="event.stopPropagation()">Watch on YouTube</a>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                        <div class="relative w-full yt-embed" style="padding-top: 56.25%;">
+                                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/6GQGtx-d-og" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                                        </div>
+                                        <div class="relative w-full yt-embed" style="padding-top: 56.25%;">
+                                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/HUNaMx6qZYo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                                        </div>
+                                        <div class="relative w-full yt-embed" style="padding-top: 56.25%;">
+                                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/aBbz5incioE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                                        </div>
+                                        <div class="relative w-full yt-embed" style="padding-top: 56.25%;">
+                                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/JMxnL2_ckhY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design 3: 3D Renders -->
+                    <div class="project-card render-card" onclick="pinPanel(this, 'renders')">
+                        <div class="project-icon-top">
+                            <i data-feather="box" class="w-16 h-16"></i>
+                        </div>
+                        <div class="project-image">
+                            <img src="images/sprites/blender.png" alt="3D Renders" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="tyler-font text-2xl mb-3">3D Renders</h3>
+                        <p class="body-font mb-3">
+                            Simple forms and lighting studies built in Blender, focused on mood and material.
+                        </p>
+
+                        <!-- Close Button for Renders -->
+                        <button class="expanded-close-btn" onclick="event.stopPropagation(); unpinPanel(event);" style="display: none;">
+                            <i data-feather="arrow-left" class="w-4 h-4"></i>
+                            <span>Back</span>
+                        </button>
+
+                        <!-- Expanded Content -->
+                        <div class="expanded-content" id="expanded-renders">
+                            <div class="expanded-showcase">
+                                <div class="expanded-image">
+                                    <div class="block w-full h-full cursor-pointer hover:opacity-90 transition-opacity" onclick="event.stopPropagation(); openImageModal('images/sprites/blender.png', '3D Renders')">
+                                        <img src="images/sprites/blender.png" alt="3D Renders" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="expanded-details">
+                                    <div class="expanded-description">
+                                        Studies on lighting, composition, and materials in 3D.
+                                    </div>
+                                    <div class="expanded-links">
+                                        <a href="https://www.instagram.com/senadawr_mico/" target="_blank" class="expanded-link" onclick="event.stopPropagation()">More renders</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/dot-pattern.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize feather icons
+        feather.replace();
+
+        // Image modal functionality
+        function openImageModal(imageSrc, imageAlt) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            modalImage.alt = imageAlt;
+            modal.classList.add('show');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            document.body.classList.remove('modal-open');
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>
+
+

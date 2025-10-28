@@ -1,39 +1,31 @@
-
-/* ========================================== */
-/* KEYFRAME ANIMATIONS */
-/* ========================================== */
-
-/* Fade in animation for elements appearing on screen */
+/* Fade in anim */
 @keyframes fade-in {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Bounce animation for call-to-action button */
+/* Bounce anim */
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
 
-/* Fade out animation for scroll effects */
+/* Fade out anim */
 @keyframes fade-out {
     from { opacity: 1; transform: translateY(0) scale(1); }
     to { opacity: 0; transform: translateY(-50px) scale(0.8); }
 }
-/* ========================================== */
-/* BASE STYLES */
-/* ========================================== */
 
 /* Global body styling */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Arial", sans-serif;
     scroll-behavior: smooth; /* Smooth scrolling for anchor links */
     overflow-x: hidden; /* Prevent horizontal scroll */
-    background-color: #01823E; /* Green background color */
-    color: #000000; /* Black text color */
+    background-color: #01823E;
+    color: #000000;
 }
 
-/* Vanta.js background styling */
+/* Background styling */
 .vanta-bg {
     position: fixed;
     top: 0;
@@ -45,35 +37,26 @@ body {
     opacity: 0.5;
 }
 
-
-/* ========================================== */
-/* SCROLL ANIMATIONS */
-/* ========================================== */
-
-/* Base scroll section styling with smooth transitions */
+/* Smooth transitions */
 .scroll-section {
-    transition: all 0.6s ease-out; /* Smooth transition for all properties */
+    transition: all 0.6s ease-out;
     opacity: 1;
     transform: translateY(0) scale(1);
 }
 
-/* Fade out effect when section exits viewport */
+/* Fade out effect */
 .scroll-section.fade-out {
     opacity: 0;
-    transform: translateY(-50px) scale(0.8); /* Move up and scale down */
+    transform: translateY(-50px) scale(0.8);
 }
 
-/* Fade in effect when section enters viewport */
+/* Fade in effect */
 .scroll-section.fade-in {
     opacity: 1;
     transform: translateY(0) scale(1); /* Normal position and scale */
 }
 
-/* ========================================== */
-/* BUTTON STYLES */
-/* ========================================== */
-
-/* Call-to-action button styling with disconnected border */
+/* Button styling */
 .scroll-down-btn {
     display: inline-flex;
     align-items: center;
@@ -84,7 +67,8 @@ body {
     position: relative;
     transition: all 0.3s ease;
 }
-/* Creates the disconnected border effect */
+
+/* Border effect */
 .scroll-down-btn::before {
     content: '';
     position: absolute;
@@ -95,15 +79,12 @@ body {
     border: 4px solid #000000;
     pointer-events: none;
 }
-/* Hover effects for the button */
+
+/* Hover effects */
 .scroll-down-btn:hover {
     background: #333333;
-    transform: translateY(-3px); /* Lift up slightly on hover */
+    transform: translateY(-3px);
 }
-
-/* ========================================== */
-/* WORK CARD STYLES */
-/* ========================================== */
 
 /* Portfolio work card styling */
 .work-card {
@@ -114,7 +95,7 @@ body {
     transition: all 0.3s ease;
     cursor: pointer;
 }
-/* Disconnected border for work cards */
+/* Border effect for work cards */
 .work-card::before {
     content: '';
     position: absolute;
@@ -126,129 +107,108 @@ body {
     pointer-events: none;
 }
 
-/* Hover effects for work cards */
+/* Hover effect for work cards */
 .work-card:hover {
     background: #333333;
-    transform: translateY(-5px); /* Lift up on hover */
+    transform: translateY(-5px);
 }
 
-/* Work card image container */
+/* Work card image */
 .work-card-img {
-    aspect-ratio: 16/9; /* Maintain 16:9 aspect ratio */
-    overflow: hidden; /* Hide overflow for zoom effect */
+    aspect-ratio: 16/9;
+    overflow: hidden;
 }
 
 /* Work card image styling */
 .work-card-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
 /* Zoom effect on work card hover */
 .work-card:hover .work-card-img img {
-    transform: scale(1.1); /* Scale up image on hover */
+    transform: scale(1.1);
 }
-
-/* ========================================== */
-/* SECTION LAYOUT */
-/* ========================================== */
 
 /* General section styling */
 section {
-    scroll-margin-top: 80px; /* Account for fixed navbar */
+    scroll-margin-top: 80px; /* Fix for mis-aligned About Me???? */
     padding: 6rem 0;
 }
 
-/* Projects section specific styling */
+/* Projects section styling */
 #projects {
     min-height: auto;
     padding: 4rem 0 2rem 0;
 }
 
-/* ========================================== */
-/* ABOUT TEXT STYLING */
-/* ========================================== */
-
 /* Highlighted text background for about section */
 .about-text p {
-    background: #000000; /* Black background */
-    color: #ffffff; /* White text */
+    background: #000000;
+    color: #ffffff;
     font-weight: 500;
     line-height: 1.6;
     padding: 0.1rem 0.2rem;
     display: inline;
-    box-decoration-break: clone; /* Break background across lines */
-    -webkit-box-decoration-break: clone; /* Webkit support */
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone; /* Webkit support I need this */
 }
-
-/* ========================================== */
-/* PROFILE IMAGE STYLING */
-/* ========================================== */
 
 /* Profile image with connected border */
 .profile-image {
-    border: 4px solid #000000; /* Black border */
-    box-shadow: 0 0 0 4px #000000; /* Additional shadow for depth */
+    border: 4px solid #000000;
+    box-shadow: 0 0 0 4px #000000;
 }
 
-/* ========================================== */
-/* SKILLS CIRCLE LAYOUT */
-/* ========================================== */
-
-/* Container for circular skills layout */
+/* Circular skills layout */
 .skills-circle {
     position: relative;
-    width: 400px; /* Circle diameter */
+    width: 400px;
     height: 400px;
-    margin: 0 auto; /* Center the circle */
+    margin: 0 auto;
 }
 
 /* Individual skill item styling */
 .skills-circle .skill-item {
-    position: absolute; /* Position items within the circle */
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     transition: all 0.3s ease;
-    width: 140px; /* Space for icon and text */
+    width: 140px;
     height: 140px;
 }
 
 /* Hover state for skill items */
 .skills-circle .skill-item:hover {
-    z-index: 10; /* Bring to front on hover */
+    z-index: 10;
 }
 
-/* Diamond-shaped background for skill icons */
+/* Diamond background for each skill */
 .skills-circle .skill-item .icon-wrapper {
-    background: #000000; /* Black diamond background */
+    background: #000000;
     padding: 10px;
-    transform: rotate(45deg); /* Rotate to create diamond shape */
+    transform: rotate(45deg); /* Diamond is unbreakable */
     border-radius: 4px;
     transition: all 0.3s ease;
     margin-bottom: 0.5rem;
 }
 
-/* Counter-rotate icons to appear normal */
+/* Normalize icons */
 .skills-circle .skill-item img {
     transition: all 0.3s ease;
-    transform: rotate(-45deg); /* Counter-rotate to keep icons upright */
+    transform: rotate(-45deg);
 }
 
-/* Scale effect on hover */
+/* Scale effec */
 .skills-circle .skill-item:hover img {
-    transform: scale(1.1); /* Scale up on hover */
+    transform: scale(1.1);
 }
 
-/* ========================================== */
-/* SKILL ICON POSITIONING */
-/* ========================================== */
-
-/* Position each skill icon in a perfect circle */
-/* Top center - HTML */
+/* Skills in a circle */
 .skills-circle .skill-item:nth-child(1) {
     top: 0;
     left: 50%;
@@ -259,7 +219,7 @@ section {
     transform: translateX(-50%) scale(1.1);
 }
 
-/* Top right - Python */
+/* Python */
 .skills-circle .skill-item:nth-child(2) {
     top: 35%;
     right: 0;
@@ -269,7 +229,7 @@ section {
     transform: translateY(-50%) scale(1.1);
 }
 
-/* Top left - Java */
+/* Java */
 .skills-circle .skill-item:nth-child(3) {
     top: 35%;
     left: 0;
@@ -279,7 +239,7 @@ section {
     transform: translateY(-50%) scale(1.1);
 }
 
-/* Bottom right - Blender */
+/* Blender */
 .skills-circle .skill-item:nth-child(4) {
     bottom: 30%;
     right: 0;
@@ -289,7 +249,7 @@ section {
     transform: translateY(50%) scale(1.1);
 }
 
-/* Bottom center - Photoshop */
+/* Photoshop */
 .skills-circle .skill-item:nth-child(5) {
     bottom: 0;
     left: 50%;
@@ -299,7 +259,7 @@ section {
     transform: translateX(-50%) scale(1.1);
 }
 
-/* Bottom left - Premiere */
+/* Premiere */
 .skills-circle .skill-item:nth-child(6) {
     bottom: 30%;
     left: 0;
@@ -309,7 +269,7 @@ section {
     transform: translateY(50%) scale(1.1);
 }
 
-/* Center - After Effects */
+/* After Effects */
 .skills-circle .skill-item:nth-child(7) {
     top: 50%;
     left: 50%;
@@ -319,27 +279,19 @@ section {
     transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* ========================================== */
-/* SKILL LABEL STYLING */
-/* ========================================== */
-
-/* Skill text labels with highlighted background */
+/* Skill text labels */
 .skill-label {
-    background: #000000; /* Black background */
-    color: #ffffff; /* White text */
-    font-family: 'Syne Mono', monospace; /* Monospace font */
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Syne Mono', monospace;
     font-weight: 500;
     font-size: 0.9rem;
     letter-spacing: 0.05em;
     padding: 0.1rem 0.4rem;
     display: inline;
-    box-decoration-break: clone; /* Break background across lines */
-    -webkit-box-decoration-break: clone; /* Webkit support */
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
-
-/* ========================================== */
-/* PROJECT PANEL STYLES */
-/* ========================================== */
 
 /* Project grid layout */
 .project-grid {
@@ -347,6 +299,18 @@ section {
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Centered variant for creative.html */
+.project-grid.centered-grid {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+/* Fixes cards when centered somehow */
+.project-grid.centered-grid .project-card {
+    width: 100%;
+    max-width: 420px;
 }
 
 .project-grid.pinned {
@@ -358,6 +322,12 @@ section {
 .project-grid.pinned .project-card.pinned {
     grid-column: 1;
     grid-row: 1;
+}
+
+/* WIDE CARD */
+.project-grid.centered-grid.pinned .project-card.pinned.expanded {
+    width: 100%;
+    max-width: 1200px;
 }
 
 .other-panels-container {
@@ -395,7 +365,13 @@ section {
     z-index: 200;
 }
 
-/* Expanded content - hidden by default */
+/* Landscape motion card */
+.project-card.motion-card.pinned.expanded {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Expanded content - hidden bnefore press */
 .expanded-content {
     display: none !important;
     padding: 1.5rem;
@@ -404,9 +380,10 @@ section {
     margin-top: 1rem;
     border: 4px solid #000000;
     position: relative;
-    max-height: 50vh;
+    max-height: 90vh;
     overflow-y: auto;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .expanded-content::before {
@@ -458,7 +435,7 @@ section {
     transform: scale(1.05);
 }
 
-/* Project icon at top of panel - hidden by default */
+/* Project icon at top of panel - hidden before press */
 .project-icon-top {
     display: none;
     justify-content: center;
@@ -485,6 +462,123 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     align-items: start;
+}
+
+/* Motion Graphics specific adjustments */
+.project-card.motion-card .project-image {
+    pointer-events: none; /* do not make the AE logo clickable */
+}
+
+/* Hide the large AE banner image inside the expanded motion panel */
+.project-card.motion-card .expanded-image {
+    display: none;
+}
+
+/* Hide top icons when expanded for poster and renders */
+.project-card.poster-card.expanded .project-icon-top,
+.project-card.render-card.expanded .project-icon-top {
+    display: none;
+}
+
+/* Hide large Photoshop and Blender banners in expanded view */
+.project-card.poster-card .expanded-image,
+.project-card.render-card .expanded-image {
+    display: none;
+}
+
+/* Poster grid thumbnails spacing */
+.poster-embed {
+    margin-bottom: 1rem;
+}
+
+/* Center and enlarge poster thumbnails */
+.posters-grid {
+    justify-items: center;
+}
+
+.posters-grid .poster-embed {
+    width: 100%;
+    max-width: 480px; /* fit 3 columns nicely */
+}
+
+.posters-grid .poster-embed img {
+    object-fit: contain;
+}
+
+/* Center the Posters expanded layout like Motion (single column content area) */
+.project-card.poster-card .expanded-showcase {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.project-card.poster-card .expanded-details {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Make Posters grid scrollable within the expanded panel (like Motion) */
+.project-card.poster-card .posters-grid {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+    .project-card.poster-card .posters-grid {
+        max-height: 55vh;
+    }
+}
+
+@media (max-width: 640px) {
+    .project-card.poster-card .posters-grid {
+        max-height: 50vh;
+    }
+}
+
+.expanded-showcase.motion-expanded {
+    grid-template-columns: 1fr;
+}
+
+.expanded-showcase.motion-expanded .expanded-details .grid iframe {
+    width: 100%;
+    height: 420px;
+}
+
+/*67*/
+.yt-embed {
+    margin-bottom: 6.7rem;
+}
+
+/* Make the embedded videos area scrollable within the expanded panel */
+.expanded-showcase.motion-expanded .expanded-details .grid {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 0.5rem; /* space for scrollbar */
+}
+
+@media (max-width: 1024px) {
+    .expanded-showcase.motion-expanded .expanded-details .grid {
+        max-height: 55vh;
+    }
+}
+
+@media (max-width: 640px) {
+    .expanded-showcase.motion-expanded .expanded-details .grid {
+        max-height: 50vh;
+    }
+}
+
+@media (max-width: 1024px) {
+    .expanded-showcase.motion-expanded .expanded-details .grid iframe {
+        height: 280px;
+    }
+}
+
+@media (max-width: 640px) {
+    .expanded-showcase.motion-expanded .expanded-details .grid iframe {
+        height: 220px;
+    }
 }
 
 .expanded-image {
