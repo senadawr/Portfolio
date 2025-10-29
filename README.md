@@ -50,6 +50,7 @@ python -m http.server 8000
 ```
 
 ### Usage Notes
+- The site is live [here.](https://senadawr.github.io/Portfolio/)
 - The navbar links in `components/navbar.js` point to `index.html` hash sections (`#home`, `#about`, `#work`, `#contact`). They also render a mobile menu on small screens.
 - The projects and creative pages use expandable “pinned” panels; click a card to expand, then use the Back button or press Escape to collapse.
 - Image modal: click thumbnails inside expanded panels to open the modal; click outside or press Escape to close.
@@ -57,7 +58,7 @@ python -m http.server 8000
 ### Credits
 - Icons: Feather Icons (`libs/feather-icons.js`)
 - Utilities: Tailwind runtime (`libs/tailwindcss.js`)
-- Visuals: Vanta Dots (`https://www.vantajs.com`) and Three.js (`https://threejs.org/`)
+- Visuals: Vanta Dots [Vanta.js](https://www.vantajs.com) and Three.js [Three.js](https://threejs.org/)
 
 ### 📄 License
 This project is provided as‑is. If you plan to open‑source it, add a license (e.g., MIT) here.
