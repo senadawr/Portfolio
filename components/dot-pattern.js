@@ -140,7 +140,8 @@ class DotPattern extends HTMLElement {
         }
 
         function checkButtonHover() {
-            const buttons = document.querySelectorAll('a, button, .work-card, .scroll-down-btn, .project-card');
+            // include skill items so dots repel around skills when hovered
+            const buttons = document.querySelectorAll('a, button, .work-card, .scroll-down-btn, .project-card, .skills-circle .skill-item');
             let foundHovered = null;
             
             buttons.forEach(button => {

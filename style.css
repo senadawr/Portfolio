@@ -177,7 +177,7 @@ section {
     position: relative;
     width: 16rem; /* matches w-64 */
     height: 16rem; /* matches h-64 */
-    padding-bottom: 1.9rem; /* reserve space for the button to avoid overlap */
+    padding-bottom: 5rem; /* extra space so button never overlaps text */
 }
 
 .profile-popouts {
@@ -234,27 +234,70 @@ section {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.45);
-    display: none;
-    display: none;
+    display: flex;              /* keep in flow for opacity animation */
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    column-gap: 1rem;      /* left-right spacing */
+    row-gap: 0.2rem;       /* top-bottom spacing (smaller) */
     flex-wrap: wrap;
     z-index: 3000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
-.profile-gallery-overlay.show { display: flex; }
+.profile-gallery-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.25s ease;
+}
+.profile-gallery-overlay.closing {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+}
+
+/* When gallery is open, do NOT blur the page background */
+body.gallery-open .vanta-bg,
+body.gallery-open main {
+    filter: none !important;
+}
+body.gallery-open { overflow: hidden; }
 
 .profile-gallery-item {
     width: clamp(200px, 23vw, 560px);
     height: clamp(200px, 23vw, 560px);
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border: 6px solid #000000;
     background: #ffffff;
-    margin: 1.2rem;
+    margin: 0;             /* rely on gap for spacing */
     cursor: pointer;
     box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+    opacity: 0;                       /* start hidden for animation */
+    transform: translateY(16px) scale(0.98);
 }
+
+@keyframes galleryItemIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+@keyframes galleryItemOut {
+    from { opacity: 1; transform: translateY(0)    scale(1); }
+    to   { opacity: 0; transform: translateY(16px) scale(0.98); }
+}
+
+/* Staggered entrance */
+.profile-gallery-overlay.show img.profile-gallery-item:nth-of-type(1) { animation: galleryItemIn 0.28s ease forwards; }
+.profile-gallery-overlay.show img.profile-gallery-item:nth-of-type(2) { animation: galleryItemIn 0.28s ease 0.06s forwards; }
+.profile-gallery-overlay.show img.profile-gallery-item:nth-of-type(3) { animation: galleryItemIn 0.28s ease 0.12s forwards; }
+.profile-gallery-overlay.show img.profile-gallery-item:nth-of-type(4) { animation: galleryItemIn 0.28s ease 0.18s forwards; }
+.profile-gallery-overlay.show img.profile-gallery-item:nth-of-type(5) { animation: galleryItemIn 0.28s ease 0.24s forwards; }
+.profile-gallery-overlay.show img.profile-gallery-item:nth-of-type(6) { animation: galleryItemIn 0.28s ease 0.30s forwards; }
+
+/* Exit animation */
+.profile-gallery-overlay.closing img.profile-gallery-item { animation: galleryItemOut 0.18s ease forwards; }
 
 .profile-gallery-close {
     position: absolute;
@@ -1374,7 +1417,7 @@ section {
 .image-modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 9999; /* ensure above gallery overlay */
     left: 0;
     top: 0;
     width: 100%;
