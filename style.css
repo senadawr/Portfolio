@@ -167,8 +167,7 @@ section {
     position: absolute;
     left: -72px;            /* extend past left edge */
     right: -36px;           /* extend past right edge */
-    bottom: 0px;           /* small offset below image */
-    height: 3px;            /* matches requested thickness */
+    height: 3px;
     background: #000000;
 }
 
