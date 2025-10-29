@@ -39,7 +39,10 @@
                     ABOUT ME
                 </h2>
                 <div class="max-w-3xl mx-auto">
-                    <img src="images/projects/aboutme.png" alt="Mico's Portrait" class="w-64 h-64 rounded-full mx-auto mb-8 object-cover profile-image">
+                    <div class="profile-wrapper mx-auto mb-2">
+                        <img src="images/projects/aboutme1.png" alt="Mico's Portrait" class="w-64 h-64 object-cover profile-image">
+                        <button id="openProfileGallery" class="view-more-btn">VIEW MORE OF ME</button>
+                    </div>
                 </div>
                 
                 <!-- Desktop: Side by side layout, Mobile: Stacked -->
@@ -152,6 +155,64 @@
     <script src="components/navbar.js"></script>
     <script src="components/dot-pattern.js"></script>
     <script src="script.js"></script>
-    <script>feather.replace();</script>
+    
+    <!-- Profile Gallery Overlay -->
+    <div id="profileGallery" class="profile-gallery-overlay">
+        <button class="profile-gallery-close" onclick="closeProfileGallery()">&times;</button>
+        <img src="images/projects/expanded1.png" alt="Expanded 1" class="profile-gallery-item" onclick="openImageModal('images/projects/expanded1.png','Expanded 1')">
+        <img src="images/projects/expanded2.png" alt="Expanded 2" class="profile-gallery-item" onclick="openImageModal('images/projects/expanded2.JPG','Expanded 2')">
+        <img src="images/projects/expanded3.png" alt="Expanded 3" class="profile-gallery-item" onclick="openImageModal('images/projects/expanded3.jpeg','Expanded 3')">
+    </div>
+
+    <!-- Image Modal (same behavior as projects.html) -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+        // Open/close profile gallery overlay
+        document.getElementById('openProfileGallery').addEventListener('click', function() {
+            const overlay = document.getElementById('profileGallery');
+            overlay.classList.add('show');
+            document.body.classList.add('modal-open');
+        });
+        function closeProfileGallery() {
+            const overlay = document.getElementById('profileGallery');
+            overlay.classList.remove('show');
+            document.body.classList.remove('modal-open');
+        }
+        // Close when clicking backdrop area
+        document.getElementById('profileGallery').addEventListener('click', function(e){
+            if (e.target === this) closeProfileGallery();
+        });
+
+        // Modal viewer (copied logic from projects page)
+        function openImageModal(imageSrc, imageAlt) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageSrc;
+            modalImage.alt = imageAlt;
+            modal.classList.add('show');
+            document.body.classList.add('modal-open');
+        }
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            document.body.classList.remove('modal-open');
+        }
+        document.getElementById('imageModal').addEventListener('click', function(e){
+            if (e.target === this) closeImageModal();
+        });
+        document.addEventListener('keydown', function(e){
+            if (e.key === 'Escape') {
+                closeImageModal();
+                closeProfileGallery();
+            }
+        });
+    </script>
 </body>
 </html>

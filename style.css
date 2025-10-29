@@ -158,9 +158,120 @@ section {
 
 /* Profile image with connected border */
 .profile-image {
-    border: 4px solid #000000;
-    box-shadow: 0 0 0 4px #000000;
+    border-bottom: 0; /* handled by wrapper pseudo-element */
 }
+
+/* Extended bottom border that goes beyond image edges */
+.profile-wrapper::after {
+    content: '';
+    position: absolute;
+    left: -72px;            /* extend past left edge */
+    right: -36px;           /* extend past right edge */
+    bottom: 0px;           /* small offset below image */
+    height: 3px;            /* matches requested thickness */
+    background: #000000;
+}
+
+/* Profile image wrapper and hover pop-outs */
+.profile-wrapper {
+    position: relative;
+    width: 16rem; /* matches w-64 */
+    height: 16rem; /* matches h-64 */
+    padding-bottom: 1.9rem; /* reserve space for the button to avoid overlap */
+}
+
+.profile-popouts {
+    pointer-events: none;
+}
+
+.profile-popouts .popout-thumb {
+    position: absolute;
+    width: 8rem;            /* default size near avatar */
+    height: 8rem;           /* maintain 1:1 squares */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 4px solid #000000;
+    background: #ffffff;
+    opacity: 0;
+    transform: translate(0, 0) scale(0.8);
+    transition: opacity 0.25s ease, transform 0.3s ease;
+}
+
+/* positions around the main image */
+.profile-popouts .popout-1 { top: -1rem; left: -1rem; }
+.profile-popouts .popout-2 { top: -1rem; right: -1rem; }
+.profile-popouts .popout-3 { bottom: -1rem; left: 50%; transform: translate(-50%, 0) scale(0.8); }
+
+.profile-wrapper:hover .profile-popouts .popout-1 { opacity: 1; transform: translate(-1rem, -1rem) scale(1); }
+.profile-wrapper:hover .profile-popouts .popout-2 { opacity: 1; transform: translate(1rem, -1rem) scale(1); }
+.profile-wrapper:hover .profile-popouts .popout-3 { opacity: 1; transform: translate(-50%, 1rem) scale(1); }
+
+/* --- Large, viewport-spanning gallery on hover --- */
+/* View More button */
+.view-more-btn {
+    position: absolute;
+    top: 100%;              /* sit directly under the bottom edge (border line) */
+    left: -72px;            /* align with extended left edge of the border */
+    transform: translateY(0); /* no visual gap */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.6rem; /* smaller */
+    font-size: 0.75rem;      /* smaller */
+    line-height: 1rem;
+    font-family: 'Syne Mono', monospace;
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 0 0 999px 999px; /* rounded bottom only */
+    cursor: pointer;
+    z-index: 2;
+}
+.view-more-btn:hover { background: #333333; }
+
+/* Fullscreen gallery overlay */
+.profile-gallery-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    z-index: 3000;
+}
+.profile-gallery-overlay.show { display: flex; }
+
+.profile-gallery-item {
+    width: clamp(200px, 23vw, 560px);
+    height: clamp(200px, 23vw, 560px);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 6px solid #000000;
+    background: #ffffff;
+    margin: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+}
+
+.profile-gallery-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 2rem;
+    line-height: 1;
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+.profile-gallery-close:hover { background: #333333; }
 
 /* Circular skills layout */
 .skills-circle {
