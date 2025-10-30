@@ -222,7 +222,6 @@ section {
     background: #000000;
     color: #ffffff;
     border: none;
-    border-radius: 0 0 999px 999px; /* rounded bottom only */
     cursor: pointer;
     z-index: 2;
 }
@@ -456,8 +455,12 @@ body.gallery-open { overflow: hidden; }
 
 /* Centered variant for creative.html */
 .project-grid.centered-grid {
-    grid-template-columns: repeat(3, 1fr);
+    /* Make each column fit card width instead of stretching and creating huge in-between space */
+    grid-template-columns: repeat(2, minmax(0, 420px));
     justify-items: center;
+    justify-content: center;
+    column-gap: 1.6rem; /* adjust as needed */
+    row-gap: 1.5rem;
 }
 
 /* Fixes cards when centered somehow */
