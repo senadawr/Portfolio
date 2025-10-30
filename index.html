@@ -170,7 +170,6 @@
     </div>
     <script>
         feather.replace();
-        // Profile gallery overlay
         document.getElementById('openProfileGallery').addEventListener('click', function() {
             const overlay = document.getElementById('profileGallery');
             overlay.classList.remove('closing');
@@ -189,18 +188,23 @@
         document.getElementById('profileGallery').addEventListener('click', function(e){
             if (e.target === this) closeProfileGallery();
         });
-        // Image Modal
         function openImageModal(imageSrc, imageAlt) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
+            if (modal && modal.parentElement !== document.body) {
+                document.body.appendChild(modal);
+            } else if (modal && modal.nextSibling) {
+                document.body.appendChild(modal);
+            }
             modalImage.src = imageSrc;
-            modalImage.alt = imageAlt;
+            modalImage.alt = imageAlt || '';
+            modal.style.zIndex = '99999';
             modal.classList.add('show');
-            document.body.classList.add('modal-open');
         }
         function closeImageModal() {
             const modal = document.getElementById('imageModal');
             modal.classList.remove('show');
+            modal.style.display = '';
             document.body.classList.remove('modal-open');
         }
         document.getElementById('imageModal').addEventListener('click', function(e){

@@ -198,9 +198,9 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    column-gap: 1rem;
-    row-gap: 0.2rem;
-    flex-wrap: wrap;
+    gap: 3px;
+    flex-wrap: nowrap; /* single row */
+    overflow-x: hidden; /* no horizontal scroll */
     z-index: 3000;
     opacity: 0;
     visibility: hidden;
@@ -221,9 +221,7 @@ section {
 }
 body.gallery-open { overflow: hidden; }
 .profile-gallery-item {
-    width: clamp(200px, 23vw, 560px);
-    height: clamp(200px, 23vw, 560px);
-    aspect-ratio: 1 / 1;
+    width: clamp(310px, 18vw, 280px);
     object-fit: cover;
     background: #ffffff;
     margin: 0;
