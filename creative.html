@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mico Roaquin | Creative Designs</title>
     <link rel="icon" type="image/png" href="images/sprites/sprite.png" />
-    <script src="libs/tailwindcss.js"></script> <!-- Tailwind CSS for utility classes -->
-    <script src="libs/feather-icons.js"></script> <!-- Feather icons for social media/icons -->
+    <script src="libs/tailwindcss.js"></script>
+    <script src="libs/feather-icons.js"></script> <!-- Icons for social media -->
     <script src="libs/vanta-dots.js"></script> <!-- Vanta.js for animated background -->
-    <link rel="stylesheet" href="libs/google-fonts.css"> <!-- Google Fonts CSS -->
-    <link rel="stylesheet" href="style.css"> <!-- Custom CSS styles -->
+    <link rel="stylesheet" href="libs/google-fonts.css">
+    <link rel="stylesheet" href="style.css">
     <meta name="description" content="Portfolio of creative designs: posters, motion graphics, and 3D renders." />
 </head>
 <body class="text-black">
@@ -18,17 +18,15 @@
     <custom-navbar></custom-navbar>
 
     <main class="relative">
-        <!-- Creative Designs Header -->
+        <!-- Creative Designs -->
         <section id="creative" class="min-h-screen py-6">
             <div class="container mx-auto px-4">
                 <h1 class="tyler-font text-3xl md:text-5xl mb-16 text-center font-black tracking-tighter">
                     MY CREATIVE DESIGNS
                 </h1>
-
-                <!-- Creative Grid -->
                 <div class="project-grid centered-grid max-w-7xl mx-auto justify-center" id="projectGrid">
                     
-                    <!-- Design 1: Poster Designs -->
+                    <!-- Poster Designs -->
                     <div class="project-card poster-card" onclick="pinPanel(this, 'posters')">
                         <div class="project-icon-top">
                             <i data-feather="image" class="w-16 h-16"></i>
@@ -40,8 +38,6 @@
                         <p class="body-font mb-3">
                             A collection of my poster layouts since 2021.
                         </p>
-
-                        <!-- Close Button for Posters -->
                         <button class="expanded-close-btn" onclick="event.stopPropagation(); unpinPanel(event);" style="display: none;">
                             <i data-feather="arrow-left" class="w-4 h-4"></i>
                             <span>Back</span>
@@ -104,7 +100,7 @@
                         </div>
                     </div>
 
-                    <!-- Design 2: Motion Graphics -->
+                    <!-- Motion Graphics -->
                     <div class="project-card motion-card" onclick="pinPanel(this, 'motion')">
                         <div class="project-icon-top">
                             <i data-feather="film" class="w-16 h-16"></i>
@@ -116,8 +112,6 @@
                         <p class="body-font mb-3">
                             Short motion graphics and animated videos which are crafted using keyframes and great visual timing.
                         </p>
-
-                        <!-- Close Button for Motion -->
                         <button class="expanded-close-btn" onclick="event.stopPropagation(); unpinPanel(event);" style="display: none;">
                             <i data-feather="arrow-left" class="w-4 h-4"></i>
                             <span>Back</span>
@@ -156,9 +150,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </section>
     </main>
@@ -170,15 +162,13 @@
             <img id="modalImage" src="" alt="">
         </div>
     </div>
-
     <script src="components/navbar.js"></script>
     <script src="components/dot-pattern.js"></script>
     <script src="script.js"></script>
     <script>
-        // Initialize feather icons
         feather.replace();
 
-        // Image modal functionality
+        // Image functionality
         function openImageModal(imageSrc, imageAlt) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
@@ -187,21 +177,16 @@
             modal.classList.add('show');
             document.body.classList.add('modal-open');
         }
-
         function closeImageModal() {
             const modal = document.getElementById('imageModal');
             modal.classList.remove('show');
             document.body.classList.remove('modal-open');
         }
-
-        // Close modal when clicking outside the image
         document.getElementById('imageModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeImageModal();
             }
         });
-
-        // Close modal with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeImageModal();

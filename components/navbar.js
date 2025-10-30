@@ -97,25 +97,19 @@ class CustomNavbar extends HTMLElement {
                 </div>
             </nav>
         `;
-        
         this.addSmoothScrolling();
         this.addMobileMenu();
     }
-    
     addSmoothScrolling() {
         const links = this.shadowRoot.querySelectorAll('a[href^="#"]');
-        
         links.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                
                 const targetId = link.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
                 if (targetElement) {
                     const navbarHeight = 0;
                     const elementPosition = targetElement.offsetTop - navbarHeight;
-                    
                     window.scrollTo({
                         top: elementPosition,
                         behavior: 'smooth'
@@ -124,23 +118,19 @@ class CustomNavbar extends HTMLElement {
             });
         });
     }
-    
     addMobileMenu() {
         const mobileMenuBtn = this.shadowRoot.querySelector('.mobile-menu-btn');
         const navLinks = this.shadowRoot.querySelector('.nav-links');
-        
         if (mobileMenuBtn && navLinks) {
             mobileMenuBtn.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
             });
-            
             const links = this.shadowRoot.querySelectorAll('.nav-links a');
             links.forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
                 });
             });
-            
             document.addEventListener('click', (e) => {
                 if (!this.contains(e.target)) {
                     navLinks.classList.remove('active');

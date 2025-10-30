@@ -5,19 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mico Roaquin | Portfolio</title>
     <link rel="icon" type="image/png" href="images/sprites/sprite.png" />
-
-    <!-- local libraries (libs folder) -->
-    <script src="libs/tailwindcss.js"></script> //utility classes
-    <script src="libs/feather-icons.js"></script> //feather icons
-    <script src="libs/vanta-dots.js"></script> //animated background
-    <link rel="stylesheet" href="libs/google-fonts.css"> //google fonts
-    <link rel="stylesheet" href="style.css"> //custom css
+    <script src="libs/tailwindcss.js"></script>
+    <script src="libs/feather-icons.js"></script> <!-- Icons for each project -->
+    <script src="libs/vanta-dots.js"></script> <!-- Vanta.js for animated background -->
+    <link rel="stylesheet" href="libs/google-fonts.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="text-black">
     <div id="vanta-bg" class="vanta-bg"></div>
     <dot-pattern></dot-pattern>
     <custom-navbar></custom-navbar>
-
     <main class="relative">
         <!-- HERO SECTION -->
         <section id="home" class="scroll-section h-screen flex flex-col items-center justify-center text-center px-4">
@@ -32,7 +29,7 @@
                 <i data-feather="arrow-down" class="ml-2"></i>
             </a>
         </section>
-
+        <!-- ABOUT SECTION -->
         <section id="about" class="scroll-section min-h-screen py-20">
             <div class="container mx-auto px-4">
                 <h2 class="tyler-font text-5xl md:text-7xl mb-16 text-center font-black tracking-tighter">
@@ -44,8 +41,6 @@
                         <button id="openProfileGallery" class="view-more-btn">VIEW MORE OF ME</button>
                     </div>
                 </div>
-                
-                <!-- Desktop: Side by side layout, Mobile: Stacked -->
                 <div class="flex flex-col lg:flex-row lg:items-start lg:gap-12 max-w-6xl mx-auto">
                     <div class="flex-1 body-font text-lg md:text-xl about-text">
                         <p>
@@ -54,7 +49,6 @@
                             Based in Los Baños, Laguna
                         </p>
                     </div>
-                    
                     <div class="flex-1 mt-12 lg:mt-0">
                         <div class="skills-circle">
                         <div class="skill-item">
@@ -84,21 +78,21 @@
                             </div>
                             <span class="skill-label">BLENDER</span>
                         </div>
-                        <!-- Adobe Photoshop -->
+                        <!-- Photoshop -->
                         <div class="skill-item">
                             <div class="icon-wrapper">
                                 <img src="images/sprites/PS.png" alt="Photoshop" class="w-12 h-12">
                             </div>
                             <span class="skill-label">PHOTOSHOP</span>
                         </div>
-                        <!-- Adobe Premiere Pro -->
+                        <!-- Premiere Pro -->
                         <div class="skill-item">
                             <div class="icon-wrapper">
                                 <img src="images/sprites/PP.png" alt="Premiere Pro" class="w-12 h-12">
                             </div>
                             <span class="skill-label">PREMIERE</span>
                         </div>
-                        <!-- Adobe After Effects -->
+                        <!-- After Effects -->
                         <div class="skill-item">
                             <div class="icon-wrapper">
                                 <img src="images/sprites/AE.png" alt="After Effects" class="w-12 h-12">
@@ -110,6 +104,7 @@
                 </div>
             </div>
         </section>
+        <!-- WORK SECTION -->
         <section id="work" class="scroll-section min-h-screen py-20">
             <div class="container mx-auto px-4">
                 <h2 class="tyler-font text-5xl md:text-7xl mb-16 text-center font-black tracking-tighter">
@@ -133,6 +128,7 @@
                 </div>
             </div>
         </section>
+        <!-- CONTACT SECTION -->
         <section id="contact" class="scroll-section min-h-screen py-20">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="tyler-font text-5xl md:text-7xl mb-16 font-black tracking-tighter">
@@ -151,12 +147,9 @@
                 </div>
             </div>
         </section>
-
     <script src="components/navbar.js"></script>
     <script src="components/dot-pattern.js"></script>
     <script src="script.js"></script>
-    
-    <!-- Profile Gallery Overlay -->
     <div id="profileGallery" class="profile-gallery-overlay">
         <button class="profile-gallery-close" onclick="closeProfileGallery()">&times;</button>
         <img src="images/projects/expanded1.png" alt="Expanded 1" class="profile-gallery-item" onclick="openImageModal('images/projects/expanded1.png','Expanded 1')">
@@ -166,18 +159,15 @@
         <img src="images/projects/expanded5.png" alt="Expanded 5" class="profile-gallery-item" onclick="openImageModal('images/projects/expanded5.png','Expanded 5')">
         <img src="images/projects/expanded6.png" alt="Expanded 6" class="profile-gallery-item" onclick="openImageModal('images/projects/expanded6.png','Expanded 6')">
     </div>
-
-    <!-- Image Modal (same behavior as projects.html) -->
     <div id="imageModal" class="image-modal">
         <div class="image-modal-content">
             <button class="image-modal-close" onclick="closeImageModal()">&times;</button>
             <img id="modalImage" src="" alt="">
         </div>
     </div>
-
     <script>
         feather.replace();
-        // Open/close profile gallery overlay
+        // Profile gallery overlay
         document.getElementById('openProfileGallery').addEventListener('click', function() {
             const overlay = document.getElementById('profileGallery');
             overlay.classList.remove('closing');
@@ -187,19 +177,16 @@
         function closeProfileGallery() {
             const overlay = document.getElementById('profileGallery');
             overlay.classList.add('closing');
-            // wait for exit animation then fully hide
             setTimeout(() => {
                 overlay.classList.remove('show');
                 overlay.classList.remove('closing');
                 document.body.classList.remove('gallery-open');
             }, 200);
         }
-        // Close when clicking backdrop area
         document.getElementById('profileGallery').addEventListener('click', function(e){
             if (e.target === this) closeProfileGallery();
         });
-
-        // Modal viewer (copied logic from projects page)
+        // Image Modal
         function openImageModal(imageSrc, imageAlt) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
