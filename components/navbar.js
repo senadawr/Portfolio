@@ -30,9 +30,7 @@ class CustomNavbar extends HTMLElement {
                     padding: 1rem;
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 }
-                .nav-links.active {
-                    display: flex;
-                }
+                .nav-links.active { display: flex; }
                 .nav-links a {
                     font-family: 'Syne Mono', monospace;
                     color: black;
@@ -43,13 +41,8 @@ class CustomNavbar extends HTMLElement {
                     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
                     text-align: center;
                 }
-                .nav-links a:last-child {
-                    border-bottom: none;
-                }
-                .nav-links a:hover {
-                    color: white;
-                    background: rgba(0, 0, 0, 0.1);
-                }
+                .nav-links a:last-child { border-bottom: none; }
+                .nav-links a:hover { color: white; background: rgba(0, 0, 0, 0.1); }
                 .mobile-menu-btn {
                     display: block;
                     background: none;
@@ -74,13 +67,8 @@ class CustomNavbar extends HTMLElement {
                         border-bottom: none;
                         text-align: left;
                     }
-                    .nav-links a:hover {
-                        background: transparent;
-                        color: #01823E;
-                    }
-                    .mobile-menu-btn {
-                        display: none;
-                    }
+                    .nav-links a:hover { background: transparent; color: rgb(255, 255, 255); }
+                    .mobile-menu-btn { display: none; }
                 }
             </style>
             <nav>
@@ -101,19 +89,32 @@ class CustomNavbar extends HTMLElement {
         this.addMobileMenu();
     }
     addSmoothScrolling() {
-        const links = this.shadowRoot.querySelectorAll('a[href^="#"]');
+        const nav = this.shadowRoot.querySelector('.nav-links');
+        if (!nav) return;
+        const links = nav.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const navbarHeight = 0;
-                    const elementPosition = targetElement.offsetTop - navbarHeight;
-                    window.scrollTo({
-                        top: elementPosition,
-                        behavior: 'smooth'
-                    });
+                const href = link.getAttribute('href') || '';
+                const hashIndex = href.indexOf('#');
+                if (hashIndex === -1) return; // no hash, let it navigate
+                const base = href.slice(0, hashIndex); // e.g., 'index.html'
+                const hash = href.slice(hashIndex);   // e.g., '#about'
+                const onIndex = /index\.html?$/.test(window.location.pathname) || window.location.pathname.endsWith('/') || window.location.pathname === '';
+                if (onIndex && (base === '' || /index\.html?$/.test(base))) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(hash);
+                    if (targetElement) {
+                        const navbarHeight = 80;
+                        let elementPosition = targetElement.offsetTop - navbarHeight;
+                        if (hash === '#about') {
+                            elementPosition = targetElement.offsetTop - 0;
+                        }
+                        window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+                    }
+                    const menu = this.shadowRoot.querySelector('.nav-links');
+                    if (menu) menu.classList.remove('active');
+                } else {
+                    // not on index page, let browser navigate to index.html#...
                 }
             });
         });
@@ -127,14 +128,10 @@ class CustomNavbar extends HTMLElement {
             });
             const links = this.shadowRoot.querySelectorAll('.nav-links a');
             links.forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
+                link.addEventListener('click', () => { navLinks.classList.remove('active'); });
             });
             document.addEventListener('click', (e) => {
-                if (!this.contains(e.target)) {
-                    navLinks.classList.remove('active');
-                }
+                if (!this.contains(e.target)) { navLinks.classList.remove('active'); }
             });
         }
     }
